@@ -15,11 +15,23 @@ Given a matrix in a text file, the program spawns four threads:
 Each thread updates a shared `score` variable as it validates each component (+1 for a pass, -1 for a fail, floored at 0). Since all four threads can hit `score` at the same time, every update is wrapped in a mutex lock so increments and decrements never overlap or get lost. The main thread only reads the file, spawns the workers, waits for them to finish, and prints the final report — it does no validation itself.
  
 ## Build & Run
- 
+
+### Prerequisites
+* A Linux / POSIX environment (or WSL on Windows)
+* GCC compiler with POSIX Threads (`pthread`) support
+* GNU Make (optional)[cite: 23]
+
+### Compilation
+
+**Option 1: Using the Makefile**[cite: 23]
 ```bash
-gcc -o mmsv mmsv.c -lpthread
-./mmsv input.txt
+make
 ```
+# Test with a valid 3x3 magic square
+./mmsv valid_magic_3x3.txt
+
+# Test with an invalid 3x3 matrix (row/col/diag/uniqueness failures)
+./mmsv invalid_magic_3x3.txt
  
 **Input format:** first line is `n`, followed by the `n x n` matrix.
  

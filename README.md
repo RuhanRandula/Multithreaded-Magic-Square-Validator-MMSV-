@@ -28,10 +28,14 @@ Each thread updates a shared `score` variable as it validates each component (+1
 make
 ```
 # Test with a valid 3x3 magic square
+```
 ./mmsv valid_magic_3x3.txt
+```
 
 # Test with an invalid 3x3 matrix (row/col/diag/uniqueness failures)
+```
 ./mmsv invalid_magic_3x3.txt
+```
  
 **Input format:** first line is `n`, followed by the `n x n` matrix.
  
